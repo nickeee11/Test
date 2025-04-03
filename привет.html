@@ -1,0 +1,45 @@
+
+<style>
+
+.custom-link {
+color: white;  /* Серый цвет вместо синего */
+text-decoration: none;
+top: 20px;
+}
+ 
+.custom-link:hover {
+color: #000;  /* Чёрный при наведении */
+}
+::selection {
+  background: white;    /* Фон выделения */
+  color: black;         /* Цвет текста при выделении */
+}
+
+/* Для Firefox */
+::-moz-selection {
+  background: white;
+  color: black;
+}
+</style>
+
+<a href="https://example.com" class="custom-link">Профиль</a>
+
+<a href="https://example.com" class="custom-link">Предметы</a>
+
+<a href="https://example.com" class="custom-link">Основное</a>
+
+<a href="https://example.com" 
+class="custom-link">Помощь/Подержка</a>
+
+<a href="#" style="background-color: black; color: white; text-decoration: none; padding: 8px 12px; display: inline-block;">
+   FAQ
+</a>
+
+<style>
+  body {
+    background-color: black;  /* Чёрный фон */
+    color: white;             /* Белый текст (для контраста) */
+    margin: 0;                /* Убирает отступы по умолчанию */
+    font-family: Arial, sans-serif;  /* Шрифт (опционально) */
+  }
+</style>
