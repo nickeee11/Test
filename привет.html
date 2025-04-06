@@ -1,45 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Моё мини-приложение</title>
+  <script src="https://vk.com/js/api/openapi.js?169"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Привет, VK!</h1>
+    <button onclick="getUserInfo()">Получить данные</button>
+    <div id="user-info"></div>
+  </div>
 
-<style>
+  <script>
+    VK.init({ apiId: YOUR_APP_ID }); // Замените на ваш API_ID
 
-.custom-link {
-color: white;  /* Серый цвет вместо синего */
-text-decoration: none;
-top: 20px;
-}
- 
-.custom-link:hover {
-color: #000;  /* Чёрный при наведении */
-}
-::selection {
-  background: white;    /* Фон выделения */
-  color: black;         /* Цвет текста при выделении */
-}
-
-/* Для Firefox */
-::-moz-selection {
-  background: white;
-  color: black;
-}
-</style>
-
-<a href="https://example.com" class="custom-link">Профиль</a>
-
-<a href="https://example.com" class="custom-link">Предметы</a>
-
-<a href="https://example.com" class="custom-link">Основное</a>
-
-<a href="https://example.com" 
-class="custom-link">Помощь/Подержка</a>
-
-<a href="#" style="background-color: black; color: white; text-decoration: none; padding: 8px 12px; display: inline-block;">
-   FAQ
-</a>
-
-<style>
-  body {
-    background-color: black;  /* Чёрный фон */
-    color: white;             /* Белый текст (для контраста) */
-    margin: 0;                /* Убирает отступы по умолчанию */
-    font-family: Arial, sans-serif;  /* Шрифт (опционально) */
-  }
-</style>
+    function getUserInfo() {
+      VK.Api.call('users.get', { fields: 'photo_100' }, (response) => {
+        if (response.error) {
+          console.error(response.error);
+        } else {
+          const user = response.response[0];
+          document.getElementById('user-info').innerHTML = `
+            <img src="${user.photo_100}" />
+            <p>${user.first_name} ${user.last_name}</p>
+          `;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
